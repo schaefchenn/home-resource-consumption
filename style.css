@@ -35,7 +35,7 @@ body {
 
 .tabs {
     display: flex;
-    gap: 1rem;
+    gap: 5rem;
     padding: 1rem 2rem;
 }
 
@@ -43,7 +43,7 @@ body {
     background: transparent;
     border: none;
     color: #94a3b8;
-    font-size: 1rem;
+    font-size: 1.6rem;
     cursor: pointer;
 }
 
@@ -122,8 +122,11 @@ body {
 .date {
     font-size: 1rem;
     color: #94a3b8; 
-    margin-bottom: 10px;
     text-align: left;
+}
+
+#date {
+    margin-bottom: 0.6rem;
 }
 
 /* Richtet das Datum und die H2 ganz links in der Card aus */
@@ -144,7 +147,8 @@ body {
 .gauge{
     width: 160px;
     height: 160px;
-    margin: 50px 0;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
     
     border-radius: 50%;
     /* HIER DIE ÄNDERUNG: */
@@ -160,8 +164,8 @@ body {
 #water-value {
     font-size: 2rem;
     color: #f1f5f9; /* Weißer Text für bessere Lesbarkeit */
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 0.0rem;
+    margin-bottom: 0.0rem;
 }
 
 .subtext {
@@ -173,4 +177,19 @@ body {
 .counter-reading {
     margin-top: 0px;
     margin-bottom: 1rem;
+}
+
+#water-chart {     /* Immer volle Container-Breite */
+    height: 60%;     /* Höhe skaliert automatisch */
+    display: block;   /* Verhindert kleine Abstände unten */
+}
+
+/* Optional: Damit die Achsen-Beschriftungen schöner aussehen */
+#water-chart text {
+    fill: #94a3b8;
+    font-size: 0.6rem;
+}
+
+#water-chart .domain {
+    display: none;    /* Entfernt die harte Achsenlinie */
 }

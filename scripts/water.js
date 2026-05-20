@@ -79,7 +79,7 @@ export function draw_history(data, maxVal) {
 
     dataLabels.append("span")
         .attr("class", "history-value")
-        .text(d => `${d.value.toFixed(3)}m³`);
+        .text(d => `${d.value.toFixed(3)} m³`);
 
     const barBg = rows.append("div")
         .attr("class", "progress-bar-bg");

@@ -32,6 +32,7 @@ d3.json("data/water_usage.json").then(data => {
 
     // 5. DOM-Updates
     d3.select("#date").text(`Datum: ${formattedDate}`);
+    d3.select(".counter-reading").text(`Zählerstand: ${latestData.value.toFixed(3)} m³`);
     d3.select("#water-value").text(`${displayValue} m³`);
 
     draw_circle(current, max);
@@ -39,12 +40,12 @@ d3.json("data/water_usage.json").then(data => {
 
     // ===== LINE CHART =====
     const chartSvg = d3.select("#water-chart");
-
-    const width = 1600;
+    
+    // Wir setzen das interne Koordinatensystem (Seitenverhältnis 2:1)
+    const width = 800;
     const height = 400;
-
     chartSvg.attr("viewBox", `0 0 ${width} ${height}`);
-
+    
     const margin = { top: 20, right: 30, bottom: 40, left: 50 };
 
     const x = d3.scaleTime()
@@ -57,21 +58,26 @@ d3.json("data/water_usage.json").then(data => {
 
     const line = d3.line()
         .x(d => x(d.date))
-        .y(d => y(d.value));
+        .y(d => y(d.value))
+        .curve(d3.curveMonotoneX); // Weiche Kurven für den Look
 
+    // Achsen (tickSize(0) für den cleanen Look)
     chartSvg.append("g")
         .attr("transform", `translate(0, ${height - margin.bottom})`)
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x).ticks(8).tickSize(0));
 
     chartSvg.append("g")
         .attr("transform", `translate(${margin.left}, 0)`)
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y).ticks(5).tickSize(0));
 
+    // Die Linie zeichnen
     chartSvg.append("path")
         .datum(data)
         .attr("fill", "none")
         .attr("stroke", "#38bdf8")
-        .attr("stroke-width", 3)
+        .attr("stroke-width", 4)
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-linecap", "round")
         .attr("d", line);
 
 });
