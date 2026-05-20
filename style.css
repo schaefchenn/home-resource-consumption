@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+.layout {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    align-items: stretch;
+}
+
+.left {
+    width: 280px;
+}
+
+.right {
+    flex: 1;
+}
+
+.card {
+    background: #1e293b;
+    padding: 1.5rem;
+    border-radius: 16px;
+    color: white;
+}
+
+.chart-card svg {
+    width: 100%;
+    height: 400px;
+}
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 2rem;
+}
+
+.tabs button {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.tabs button.active {
+    color: white;
+    border-bottom: 2px solid #38bdf8;
+}
+
+.card {
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.gauge {
+    margin: 15px 0; /* Gibt dem Kreis etwas Platz nach oben und unten */
+}
+
+.history-section {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.history-section h3 {
+    font-size: 14px;
+    color: #94a3b8; /* Helleres Grau für dunklen Hintergrund */
+    margin-bottom: 15px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.history-row {
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.history-data {
+    display: flex;
+    justify-content: space-between; /* Schiebt Monat nach links, Wert nach rechts */
+    font-size: 14px;
+    color: #f1f5f9; /* Weißer Text für bessere Lesbarkeit */
+    margin-bottom: 6px;
+}
+
+.history-month {
+    font-weight: 500;
+}
+
+.history-value {
+    font-weight: bold;
+}
+
+/* Der Hintergrund-Balken (jetzt dunkler im Dark Mode) */
+.progress-bar-bg {
+    width: 100%;
+    height: 6px;
+    background-color: #334155; /* Dunkles Schiefergrau */
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+/* Die farbige Füllung */
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #818cf8, #38bdf8); /* Matcht deine Grafik */
+    border-radius: 3px;
+    transition: width 0.5s ease-out;
+}
+
+.date {
+    font-size: 1rem;
+    color: #94a3b8; 
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Richtet das Datum und die H2 ganz links in der Card aus */
+.left .card .date,
+.right .card h2,
+.left .card h2 {
+    align-self: flex-start; /* Bricht aus der Zentrierung aus und rutscht nach links */
+    text-align: left;       /* Sichert die Linksbündigkeit des Textes */
+    width: 100%;            /* Nutzt die volle Breite, damit 'left' auch greift */
+}
+
+/* Optional: Ein bisschen Feinschliff für die Abstände */
+.left .card h2 {
+    margin-top: 0;          /* Verhindert unschönen Platz nach oben */
+    margin-bottom: 10px;    /* Abstand zum Kreis darunter */
+}
+
+.gauge{
+    width: 160px;
+    height: 160px;
+    margin: 50px 0;
+    
+    border-radius: 50%;
+    /* HIER DIE ÄNDERUNG: */
+    background-color:  #0f172a;    /* Innen transparent, damit die Card durchscheint */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; 
+}
+
+#water-value {
+    font-size: 2rem;
+    color: #f1f5f9; /* Weißer Text für bessere Lesbarkeit */
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.subtext {
+    font-size: 0.9rem;
+    color: #94a3b8; /* Helleres Grau für dunklen Hintergrund */
+    text-align: left;
+}
+
+.counter-reading {
+    margin-top: 0px;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verbrauchs Dashboard</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="header">
+        <nav class="tabs">
+            <button class="active">Wasser</button>
+            <button>Strom</button>
+            <button>Gas</button>
+        </nav>
+    </header>
+
+    <main class="layout">
+        <section class="left">
+            <div class="card">
+                <div class="date">
+                    <p id="date">Datum: 01.09.2024</p>
+                    <p class="counter-reading">Zählerstand: 680,246 m³</p>
+                </div>
+                <h2>Wasser</h2>
+                <div class = "gauge" id="progress-circle"></div>
+                <p id="water-value">9,048 m³</p>
+                <p class="subtext">Empfohlener <br> Monatsverbrauch: 0,82 m³</p>
+                <div class="history-section">
+                    <h3>Letzten Monate</h3>
+                    <div id="history-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="right">
+            <div class="card chart-card">
+                <h2>Jahresverlauf</h2>
+                <svg id="water-chart"></svg>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
