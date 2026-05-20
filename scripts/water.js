@@ -61,6 +61,7 @@ export function draw_circle(current, max) {
         .attr("transform", "translate(-20, -20) scale(0.4)");
 }
 
+
 export function draw_history(data, maxVal) {
     const container = d3.select("#history-list").html("");
 
@@ -70,24 +71,22 @@ export function draw_history(data, maxVal) {
         .append("div")
         .attr("class", "history-row");
 
-    const dataLabels = rows.append("div")
-        .attr("class", "history-data");
+    // Hier setzen wir die Klasse "history-data" ein, damit dein CSS greift
+    const dataRow = rows.append("div")
+        .attr("class", "history-data"); 
 
-    dataLabels.append("span")
+    dataRow.append("span")
         .attr("class", "history-month")
-        .text(d => d.date.toLocaleString('en-US', { month: 'short' }));
+        .text(d => d.date.toLocaleString('de-DE', { month: 'short' }));
 
-    dataLabels.append("span")
+    dataRow.append("span")
         .attr("class", "history-value")
-        .text(d => `${d.value.toFixed(3)} m³`);
+        .text(d => `${(d.value * 1000).toFixed(0)} l`);
 
-    const barBg = rows.append("div")
-        .attr("class", "progress-bar-bg");
-
-    barBg.append("div")
+    // Der Balken unter dem Text
+    rows.append("div")
+        .attr("class", "progress-bar-bg")
+        .append("div")
         .attr("class", "progress-bar-fill")
-        .style("width", d => {
-            const percentage = Math.min((d.value / maxVal) * 100, 100);
-            return `${percentage}%`;
-        });
+        .style("width", d => `${Math.min((d.value / (maxVal / 1000)) * 100, 100)}%`);
 }

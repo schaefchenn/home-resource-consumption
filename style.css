@@ -1,7 +1,8 @@
 body {
     margin: 0;
     padding: 2rem;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Hier aktivieren wir Roboto */
+    font-weight: 300;                /* Hier aktivieren wir Light 300 global */
     background: #0f172a;
     color: white;
 }
@@ -14,28 +15,27 @@ body {
 }
 
 .left {
-    width: 280px;
+    flex: 0 0 15rem;
 }
 
 .right {
-    flex: 1;
+    flex: 1; /* Nimmt alles ein, was nach dem linken Teil übrig ist */
+    margin-right: 1rem; /* Hier gibst du dem rechten Rand den gewünschten "Luft-Abstand" */
+    display: flex;
+    flex-direction: column;
 }
 
 .card {
+    height: 72vh;
     background: #1e293b;
     padding: 1.5rem;
     border-radius: 16px;
     color: white;
 }
 
-.chart-card svg {
-    width: 100%;
-    height: 400px;
-}
-
 .tabs {
     display: flex;
-    gap: 5rem;
+    gap: 2rem;
     padding: 1rem 2rem;
 }
 
@@ -43,7 +43,7 @@ body {
     background: transparent;
     border: none;
     color: #94a3b8;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 
@@ -70,7 +70,7 @@ body {
 
 .history-section {
     width: 100%;
-    margin-top: 25px;
+    margin-top: auto;
 }
 
 .history-section h3 {
@@ -111,7 +111,6 @@ body {
     overflow: hidden;
 }
 
-/* Die farbige Füllung */
 .progress-bar-fill {
     height: 100%;
     background: linear-gradient(90deg, #818cf8, #38bdf8); /* Matcht deine Grafik */
@@ -129,7 +128,6 @@ body {
     margin-bottom: 0.6rem;
 }
 
-/* Richtet das Datum und die H2 ganz links in der Card aus */
 .left .card .date,
 .right .card h2,
 .left .card h2 {
@@ -151,7 +149,7 @@ body {
     margin-bottom: 3rem;
     
     border-radius: 50%;
-    /* HIER DIE ÄNDERUNG: */
+
     background-color:  #0f172a;    /* Innen transparent, damit die Card durchscheint */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     
@@ -179,9 +177,24 @@ body {
     margin-bottom: 1rem;
 }
 
-#water-chart {     /* Immer volle Container-Breite */
-    height: 60%;     /* Höhe skaliert automatisch */
-    display: block;   /* Verhindert kleine Abstände unten */
+/* Chart mit Graph */
+
+.chart-card {
+    height: 72vh; /* Nimmt 80% der Viewport-Höhe ein */
+    width: 100%;
+    
+    overflow: hidden; 
+    
+    display: flex;
+    flex-direction: column;
+}
+
+
+#water-chart {
+    flex-grow: 1;
+    width: 100%;
+    display: block;
+    min-height: 0; 
 }
 
 /* Optional: Damit die Achsen-Beschriftungen schöner aussehen */
@@ -192,4 +205,18 @@ body {
 
 #water-chart .domain {
     display: none;    /* Entfernt die harte Achsenlinie */
+}
+
+#water-chart text {
+    font-size: 1rem; /* Hier die gewünschte Größe einstellen */
+}
+
+.grid line {
+    stroke: #94a3b8;        /* Eine sehr dunkle Farbe (fast wie der Hintergrund) */
+    stroke-width: 0.5px;    /* Hier kannst du es so dünn machen wie du willst (0.5px bis 1px) */
+    stroke-dasharray: 2, 2; /* Macht es gestrichelt für einen subtilen Look */
+}
+
+.grid .domain {
+    display: none;          /* Entfernt den äußeren Rahmen der Achsen */
 }
