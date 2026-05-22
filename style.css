@@ -19,8 +19,8 @@ body {
 }
 
 .right {
-    flex: 1; /* Nimmt alles ein, was nach dem linken Teil übrig ist */
-    margin-right: 1rem; /* Hier gibst du dem rechten Rand den gewünschten "Luft-Abstand" */
+    flex: 1;
+    margin-right: 1rem;
     display: flex;
     flex-direction: column;
 }
@@ -33,25 +33,54 @@ body {
     color: white;
 }
 
-.tabs {
-    display: flex;
-    gap: 2rem;
-    padding: 1rem 2rem;
-}
+.tabs .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-.tabs button {
-    background: transparent;
+    background: transparent; 
     border: none;
-    color: #94a3b8;
+    
+    color: #64748b; 
     font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
     cursor: pointer;
+    
+    transition: all 0.2s ease-in-out; 
 }
 
-.tabs button.active {
-    color: white;
-    border-bottom: 2px solid #38bdf8;
+
+.tabs .tab-btn:hover {
+    color: #f1f5f9;          /* Text wird fast weiß */
 }
 
+
+.tabs .tab-btn.active {
+    color: #38bdf8;          /* Dein typisches Hellblau aus dem Graphen */
+    border-bottom: 2px solid #38bdf8; /* Blauer Strich unter dem aktiven Tab */
+    padding: 0px 0px;    /* Hier kannst du den Abstand zwischen Text und Strich anpassen */
+    margin-left: 2.2rem
+}
+
+/* Verhindert, dass der aktive Tab beim Hovern flackert oder sich verfärbt */
+.tabs .tab-btn.active:hover {
+    background-color: transparent;
+    color: #38bdf8;
+}
+
+.tabs a {
+    display: inline-block; /* Sorgt dafür, dass Höhe und Breite wie bei Buttons funktionieren */
+    text-decoration: none; /* Entfernt den typischen Link-Unterstrich */
+    padding: 10px 20px;    /* Dein gewünschter Abstand im Button */
+    color: #64748b;        /* Standard-Farbe für inaktive Tabs */
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.tabs a.active {
+    color: #38bdf8;               /* Dein hellblaues Highlight */
+    border-bottom: 2px solid #38bdf8; /* Falls du den aktiven Tab unterstreichst */
+}
 .card {
     color: white;
     padding: 20px;
