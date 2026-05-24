@@ -92,7 +92,6 @@ body {
 .chart-card {
     height: 100%;
     width: 100%;
-    width: 100%;
     overflow: hidden; 
     display: flex;
     flex-direction: column;
@@ -250,6 +249,8 @@ body {
 @media (max-width: 800px) {
     .layout {
         flex-direction: column;
+        gap: 1.5rem;
+        gap: 1.5rem;
     }
 
     body {
@@ -262,16 +263,18 @@ body {
     }
 
     .left {
+        flex: none;
         width: 100%;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
     }
     
     .right {
         width: 100%;
-        height: auto;
+        margin-right: 0;
     }
 
     .chart-card {
-        padding: 5px;
+        height: 250px; 
+        padding: 1rem;
     }
 }
