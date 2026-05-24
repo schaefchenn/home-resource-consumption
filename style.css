@@ -9,6 +9,7 @@ body {
 
 .layout {
     display: flex;
+    flex-direction: row;
     gap: 2rem;
     padding: 2rem;
     align-items: stretch;
@@ -247,4 +248,19 @@ body {
 
 .grid .domain {
     display: none;          /* Entfernt den äußeren Rahmen der Achsen */
+}
+
+@media (max-width: 800px) {
+    .layout {
+        flex-direction: column;
+    }
+    
+    .left {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    
+    .right {
+        width: 100%;
+    }
 }
