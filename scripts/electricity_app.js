@@ -1,7 +1,7 @@
-import { draw_circle, draw_history, draw_graph } from "./scripts/water.js";
-const max = 820; // 0,82 m³ in Litern
+import { draw_circle, draw_history, draw_graph } from "./include/electricity.js";
+const max = 270; // kWh, empfohlener Monatsverbrauch laut BDEW
 
-d3.json("data/water_usage.json").then(data => {
+d3.json("../assets/data/electricity_usage.json").then(data => {
     data.forEach(d => {
         d.date = new Date(d.date);
         d.value = +d.value;
@@ -51,7 +51,7 @@ d3.json("data/water_usage.json").then(data => {
             }
 
             runningTotal += weeklyDiff;
-            console.log(`Monat: ${currentMonthData.month}, Datum: ${currentEntry.date.toLocaleDateString('de-DE')}, Wöchentliche Differenz: ${weeklyDiff.toFixed(3)} m³, Kumulativ: ${runningTotal.toFixed(3)} m³`);
+            console.log(`Monat: ${currentMonthData.month}, Datum: ${currentEntry.date.toLocaleDateString('de-DE')}, Wöchentliche Differenz: ${weeklyDiff.toFixed(1)} kWh, Kumulativ: ${runningTotal.toFixed(1)} kWh`);
             detailedDiffs.push({
                 month: currentMonthData.month,
                 date: currentEntry.date,
@@ -67,14 +67,14 @@ d3.json("data/water_usage.json").then(data => {
         });
     }
 
-    const current = cumulative[cumulative.length - 1].monthlyValue * 1000; // in Litern
+    const current = cumulative[cumulative.length - 1].monthlyValue;
     const last4Moths = cumulative.slice(-5, -1).reverse();
 
     console.log(cumulative.monthlyValue);
     
     d3.select("#date").text(`Datum: ${latestData.date.toLocaleDateString('de-DE')}`);
-    d3.select(".counter-reading").text(`Zählerstand: ${latestData.value.toFixed(3).replace('.', ',')} m³`);
-    d3.select("#water-value").text(`${current.toFixed(0)} l`);
+    d3.select(".counter-reading").text(`Zählerstand: ${latestData.value.toFixed(1).replace('.', ',')} kWh`);
+    d3.select("#electricity-value").text(`${current.toFixed(0)} kWh`);
 
     draw_circle(current, max);
     draw_history(last4Moths, max);

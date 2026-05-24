@@ -56,9 +56,9 @@ export function draw_circle(current, max) {
         .attr("d", "M 50 5 C 65 30, 80 55, 80 75 A 30 30 0 1 1 20 75 C 20 55, 35 30, 50 5 Z")
         .style("fill", "none")
         .style("stroke", "#94a3b8") 
-        .style("stroke-width", "6px")
+        .style("stroke-width", "10px")
         .style("stroke-linejoin", "round")
-        .attr("transform", "translate(-20, -20) scale(0.4)");
+        .attr("transform", "translate(-25, -25) scale(0.5)");
 }
 
 
@@ -102,10 +102,10 @@ export function draw_graph(data) {
     const computedStyles = window.getComputedStyle(chartContainer);
 
     const margin = {
-        top: parseInt(computedStyles.getPropertyValue('--chart-margin-top')) || 20,
+        top: parseInt(computedStyles.getPropertyValue('--chart-margin-top')) || 50,
         right: parseInt(computedStyles.getPropertyValue('--chart-margin-right')) || 50,
         bottom: parseInt(computedStyles.getPropertyValue('--chart-margin-bottom')) || 50,
-        left: parseInt(computedStyles.getPropertyValue('--chart-margin-left')) || 50
+        left: parseInt(computedStyles.getPropertyValue('--chart-margin-left')) || 75
     };
 
     // X-Skala (Zeit)

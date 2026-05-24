@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,14 +9,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/water_style.css" />
+    <link rel="stylesheet" href="../css/electricity_style.css" />
 </head>
+
 <body>
     <header class="header">
         <nav class="tabs">
-            <a href="index.html" class="tab-btn active">Wasser</a>
-            <a href="public/electricity.html" class="tab-btn">Strom</a>
-            <a href="public/gas.html" class="tab-btn">Gas</a>
+            <a href="../index.html" class="tab-btn">Wasser</a>
+            <a href="electricity.html"class="tab-btn active">Strom</a>
+            <a href="../gas.html" class="tab-btn">Gas</a>
         </nav>
     </header>
 
@@ -25,11 +27,11 @@
             <div class="card">
                 <div class="date">
                     <p id="date">Datum: 20.05.2026</p>
-                    <p class="counter-reading">Zählerstand: 680,246 m³</p>
+                    <p class="counter-reading">Zählerstand: 46780,5 kWh</p>
                 </div>
                 <div class = "gauge" id="progress-circle"></div>
-                <p id="water-value">600 l</p>
-                <p class="subtext">Empfohlener <br> Monatsverbrauch: 820 l</p>
+                <p id="electricity-value">120 kWh</p>
+                <p class="subtext">Empfohlener <br> Monatsverbrauch: 270 kWh</p>
                 <div class="history-section">
                     <h3>Letzten Monate</h3>
                     <div id="history-list"></div>
@@ -39,11 +41,11 @@
 
         <section class="right">
             <div class="card chart-card">
-                <svg id="water-chart"></svg>
+                <svg id="electricity-chart"></svg>
             </div>
         </section>
     </main>
 
-    <script type="module" src="scripts/water_app.js"></script>
+    <script type="module" src="../scripts/electricity_app.js"></script>
 </body>
 </html>
