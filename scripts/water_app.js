@@ -1,5 +1,5 @@
 import { draw_circle, draw_history, draw_graph } from "./include/water.js";
-const max = 820; // 0,82 m³ in Litern
+const max = 7500; // 0,82 m³ in Litern
 
 d3.json("assets/data/water_usage.json").then(data => {
     data.forEach(d => {
