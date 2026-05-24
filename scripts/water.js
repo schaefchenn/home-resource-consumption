@@ -13,9 +13,11 @@ export function draw_circle(current, max) {
 
     // 3. SVG-Container erstellen
     const svg = d3.select("#progress-circle")
+        .html("") // Leert den Container vor dem Neuzeichnen
         .append("svg")
-        .attr("width", width)
-        .attr("height", height)
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("width", "100%")
+        .attr("height", "100%")
         .append("g")
         .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
@@ -97,7 +99,14 @@ export function draw_graph(data) {
     svg.attr("viewBox", `0 0 ${width} ${height}`);
     svg.selectAll("*").remove(); 
 
-    const margin = { top: 20, right: 50, bottom: 50, left: 50 };
+    const computedStyles = window.getComputedStyle(chartContainer);
+
+    const margin = {
+        top: parseInt(computedStyles.getPropertyValue('--chart-margin-top')) || 20,
+        right: parseInt(computedStyles.getPropertyValue('--chart-margin-right')) || 50,
+        bottom: parseInt(computedStyles.getPropertyValue('--chart-margin-bottom')) || 50,
+        left: parseInt(computedStyles.getPropertyValue('--chart-margin-left')) || 50
+    };
 
     // X-Skala (Zeit)
     const x = d3.scaleTime()
