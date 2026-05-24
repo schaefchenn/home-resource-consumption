@@ -7,6 +7,19 @@ body {
     color: white;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    margin-left: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+.tabs {
+    display: flex;
+    gap: 2rem; /* Erzeugt einen sauberen Abstand von ~24px zwischen den Tabs */
+}
+
 .tabs .tab-btn:hover {
     color: #f1f5f9;          /* Text wird fast weiß */
 }
@@ -15,7 +28,6 @@ body {
     color: #38bdf8;          /* Dein typisches Hellblau aus dem Graphen */
     border-bottom: 2px solid #38bdf8; /* Blauer Strich unter dem aktiven Tab */
     padding: 0px 0px;    /* Hier kannst du den Abstand zwischen Text und Strich anpassen */
-    margin-left: 2.2rem
 }
 
 /* Verhindert, dass der aktive Tab beim Hovern flackert oder sich verfärbt */
@@ -51,7 +63,8 @@ body {
     text-decoration: none;
     cursor: pointer;
     
-    transition: all 0.2s ease-in-out; 
+    transition: all 0.2s ease-in-out;
+    padding: 0px 0px; 
 }
 
 .layout {
@@ -256,6 +269,10 @@ body {
     body {
         margin: 0;
         padding: 0;
+    }
+
+    header {
+        margin-left: 1.5rem;
     }
     
     main.layout {

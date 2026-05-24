@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 2rem;
     font-family: 'Roboto', sans-serif; /* Hier aktivieren wir Roboto */
-    font-weight: 300;                /* Hier aktivieren wir Light 300 global */
+    font-weight: 300;                  /* Hier aktivieren wir Light 300 global */
     background: #0f172a;
     color: white;
 }
@@ -15,57 +15,57 @@ header {
     margin-top: 1.5rem;
 }
 
+/* === TABS NAVIGATION === */
 .tabs {
     display: flex;
     gap: 2rem; /* Erzeugt einen sauberen Abstand von ~24px zwischen den Tabs */
-}
-
-.tabs .tab-btn:hover {
-    color: #f1f5f9;          /* Text wird fast weiß */
-}
-
-.tabs .tab-btn.active {
-    color: #f59e0b;          /* Strom-Gelb (Amber) für das aktive Tab-Highlight */
-    border-bottom: 2px solid #f59e0b;  
-}
-
-/* Verhindert, dass der aktive Tab beim Hovern flackert oder sich verfärbt */
-.tabs .tab-btn.active:hover {
-    background-color: transparent;
-    color: #f59e0b;
-}
-
-.tabs a {
-    display: inline-block; /* Sorgt dafür, dass Höhe und Breite wie bei Buttons funktionieren */
-    text-decoration: none; /* Entfernt den typischen Link-Unterstrich */
-    padding: 10px 20px;    /* Dein gewünschter Abstand im Button */
-    color: #64748b;        /* Standard-Farbe für inaktive Tabs */
-    transition: color 0.3s, border-color 0.3s;
-}
-
-.tabs a.active {
-    color: #f59e0b;               
-    border-bottom: 2px solid #f59e0b; 
 }
 
 .tabs .tab-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     background: transparent; 
     border: none;
-    
     color: #64748b; 
     font-size: 1.2rem;
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
-    
     transition: all 0.2s ease-in-out;
-    padding: 0px 0px; 
+    padding: 0px 0px;  
 }
 
+.tabs .tab-btn:hover {
+    color: #f1f5f9;            /* Text wird fast weiß */
+}
+
+.tabs .tab-btn.active {
+    color: #dc2626;            /* Gas-Orange (Tailwind orange-500) für das aktive Tab-Highlight */
+    border-bottom: 2px solid #dc2626; 
+    padding: 0px 0px;    
+}
+
+/* Verhindert, dass der aktive Tab beim Hovern flackert oder sich verfärbt */
+.tabs .tab-btn.active:hover {
+    background-color: transparent;
+    color: #f97316;
+}
+
+.tabs a {
+    display: inline-block;     /* Sorgt dafür, dass Höhe und Breite wie bei Buttons funktionieren */
+    text-decoration: none;     /* Entfernt den typischen Link-Unterstrich */
+    padding: 10px 20px;        /* Gewünschter Abstand im Button */
+    color: #64748b;            /* Standard-Farbe für inaktive Tabs */
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.tabs a.active {
+    color: #dc2626;               
+    border-bottom: 2px solid #dc2626; 
+}
+
+/* === LAYOUT & CARDS === */
 .layout {
     display: flex;
     flex-direction: row;
@@ -93,7 +93,6 @@ header {
     padding: 1.5rem;
     border-radius: 16px;
     color: white;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,8 +114,8 @@ header {
     --chart-margin-left: 0px;
 }
 
-/* Auf die ID deiner neuen HTML angepasst */
-#electricity-chart {
+/* === D3 CHART (Auf #gas-chart angepasst) === */
+#gas-chart {
     flex-grow: 1;
     width: 100%;
     height: 0;
@@ -124,15 +123,16 @@ header {
     display: block;
 }
 
-#electricity-chart text {
+#gas-chart text {
     fill: #94a3b8;
     font-size: 1rem; 
 }
 
-#electricity-chart .domain {
+#gas-chart .domain {
     display: none;    /* Entfernt die harte Achsenlinie */
 }
 
+/* Grid-Linien für den Hintergrund */
 .grid line {
     stroke: #94a3b8;
     stroke-width: 0.5px;
@@ -143,6 +143,72 @@ header {
     display: none;
 }
 
+/* === LEFT CARD DETAILS === */
+.date {
+    font-size: 1rem;
+    color: #94a3b8; 
+    text-align: left;
+}
+
+#date {
+    margin-bottom: 0.6rem;
+}
+
+.counter-reading {
+    margin-top: 0px;
+    margin-bottom: 1rem;
+}
+
+.left .card .date,
+.right .card h2,
+.left .card h2 {
+    align-self: flex-start; 
+    text-align: left;       
+    width: 100%;            
+}
+
+.left .card h2 {
+    margin-top: 0;          
+    margin-bottom: 10px;    
+}
+
+/* === GAUGE KREIS UND GLOW-EFFEKT (Gas-Thema) === */
+.gauge {
+    width: 160px;
+    height: 160px;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    
+    border-radius: 50%;
+    background-color: #0f172a;    
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 8px;
+
+    /* === LEUCHT-SCHLAGSCHATTEN IN FEURIGEN ROT-ORANGE-TÖNEN === */
+    box-shadow: 
+        0 0 50px 2px rgba(239, 68, 68, 0.15),   /* Breites, sanftes Gasflammen-Glimmen (Rot) */
+        0 0 20px 1px rgba(249, 115, 22, 0.25);  /* Intensiverer innerer Kern (Orange) */
+}
+
+/* Auf die ID deiner gas.html angepasst */
+#gas-value {
+    font-size: 2rem;
+    color: #f1f5f9; 
+    margin-top: 0.0rem;
+    margin-bottom: 0.0rem;
+}
+
+.subtext {
+    font-size: 0.9rem;
+    color: #94a3b8; 
+    text-align: left;
+}
+
+/* === HISTORY BAR SECTION === */
 .history-section {
     width: 100%;
     margin-top: auto;
@@ -187,89 +253,26 @@ header {
 
 .progress-bar-fill {
     height: 100%;
-    /* Gelb-Orange Energie-Verlauf für die History-Balken */
-    background: linear-gradient(90deg, #d97706, #fbbf24);
+    /* Rot-zu-Orange Verlauf für die Gas-Verbrauchsbalken */
+    background: linear-gradient(90deg, #dc2626, #f97316);
     border-radius: 3px;
     transition: width 0.5s ease-out;
 }
 
-.date {
-    font-size: 1rem;
-    color: #94a3b8; 
-    text-align: left;
-}
-
-#date {
-    margin-bottom: 0.6rem;
-}
-
-.left .card .date,
-.right .card h2,
-.left .card h2 {
-    align-self: flex-start; 
-    text-align: left;       
-    width: 100%;            
-}
-
-.left .card h2 {
-    margin-top: 0;          
-    margin-bottom: 10px;    
-}
-
-.gauge {
-    width: 160px;
-    height: 160px;
-    margin-top: 4rem;
-    margin-bottom: 3rem;
-    
-    border-radius: 50%;
-    background-color: #0f172a;    
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-
-    padding: 8px;
-
-    /* === LEUCHT-SCHLAGSCHATTEN IN WARMTÖNEN FÜR STROM === */
-    box-shadow: 
-        0 0 50px 2px rgba(245, 158, 11, 0.2),  /* Breites warmes Glimmen */
-        0 0 1px 0px rgba(251, 191, 36, 0.4);  /* Intensiverer Kern am Rand */
-}
-
-/* Auf die ID deiner neuen HTML angepasst */
-#electricity-value {
-    font-size: 2rem;
-    color: #f1f5f9; 
-    margin-top: 0.0rem;
-    margin-bottom: 0.0rem;
-}
-
-.subtext {
-    font-size: 0.9rem;
-    color: #94a3b8; 
-    text-align: left;
-}
-
-.counter-reading {
-    margin-top: 0px;
-    margin-bottom: 1rem;
-}
-
+/* === RESPONSIVE INTERFACE === */
 @media (max-width: 800px) {
     .layout {
         flex-direction: column;
         gap: 1.5rem;
     }
 
+    header {
+        margin-left: 1.5rem;
+    }
+
     body {
         margin: 0;
         padding: 0;
-    }
-
-    header {
-        margin-left: 1.5rem;
     }
     
     main.layout {
@@ -287,7 +290,6 @@ header {
         margin-right: 0;
     }
 
-    /* Setzt die Mindesthöhe mobil zurück */
     .left .card {
         min-height: auto;
     }

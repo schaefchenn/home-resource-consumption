@@ -40,7 +40,7 @@ export function draw_circle(current, max) {
         const sAngle = startAngle + (i * segmentAngle);
         const eAngle = startAngle + ((i + 1) * segmentAngle);
         
-        const color = d3.interpolate("#fef08a", "#f97316")(i / numSegments);
+        const color = d3.interpolate("#ffedd5", "#dc2626")(i / numSegments);
 
         svg.append("path")
             .datum({ startAngle: sAngle, endAngle: eAngle })
@@ -52,12 +52,12 @@ export function draw_circle(current, max) {
 
     // 8. Das Blitz-SVG-Icon für Strom
 svg.append("path")
-    .attr("d", "M 341.292 204.165 c -4 -6.696 -11.045 -10.694 -18.845 -10.694 h -77.81 L 267.31 16.624 c 0.917 -7.153 -3.238 -13.688 -10.104 -15.893 c -6.866 -2.202 -14.048 0.69 -17.467 7.039 L 117.97 233.915 c -3.698 6.868 -3.518 14.966 0.482 21.662 c 4 6.696 11.045 10.694 18.845 10.694 h 77.81 l -22.673 176.847 c -0.917 7.153 3.238 13.688 10.104 15.893 c 1.54 0.494 3.096 0.732 4.622 0.732 c 5.276 0 10.193 -2.847 12.845 -7.771 l 121.77 -226.145 C 345.472 218.96 345.291 210.862 341.292 204.165 Z M 328.567 218.716 L 207.502 443.538 l 23.566 -183.813 c 0.274 -2.138 -0.385 -4.29 -1.809 -5.908 s -3.475 -2.545 -5.63 -2.545 h -86.333 c -3.56 0 -5.359 -2.368 -5.967 -3.386 c -0.608 -1.018 -1.84 -3.725 -0.153 -6.859 L 252.242 16.202 l -23.566 183.815 c -0.274 2.138 0.385 4.29 1.809 5.908 s 3.475 2.545 5.63 2.545 h 86.333 c 3.56 0 5.359 2.368 5.967 3.386 C 329.022 212.875 330.254 215.582 328.567 218.716 Z")
+    .attr("d", "M 200.09 233.52 c 22.42 -22.41 61.34 -68.33 47.39 -105.52 c 0 0 50.87 52.71 36.45 120.47 c 0 0 31.72 -24 33.4 -63.44 c 25.13 29.08 26.36 97.07 25 112.46 C 338.1 345.08 303.59 384 255.82 384 a 86.51 86.51 0 0 1 -86.51 -86.51 a 63.38 63.38 0 0 1 2.52 -15.8 A 108.42 108.42 0 0 1 200.09 233.52 Z")
     .style("fill", "none")
     .style("stroke", "#94a3b8") 
     .style("stroke-width", "22px") /* Etwas dicker, da der Pfad so groß ist */
     .style("stroke-linejoin", "round")
-    .attr("transform", "scale(0.15) translate(-230, -230)");
+    .attr("transform", "scale(0.22) translate(-255, -255)");
 }
 
 
@@ -79,7 +79,7 @@ export function draw_history(data, maxVal) {
 
     dataRow.append("span")
         .attr("class", "history-value")
-        .text(d => `${(d.monthlyValue).toFixed(1)} kWh`);
+        .text(d => `${(d.monthlyValue).toFixed(1)} m³`);
 
     rows.append("div")
         .attr("class", "progress-bar-bg")
@@ -90,7 +90,7 @@ export function draw_history(data, maxVal) {
 
 export function draw_graph(data) {
     const chartContainer = document.querySelector('.chart-card');
-    const svg = d3.select("#electricity-chart");
+    const svg = d3.select("#gas-chart");
     
     const width = chartContainer.clientWidth;
     const height = chartContainer.clientHeight - 60; 
@@ -145,7 +145,7 @@ export function draw_graph(data) {
 
     svg.append("g")
         .attr("transform", `translate(${margin.left}, 0)`)
-        .call(d3.axisLeft(y).ticks(5).tickSize(0).tickFormat(d => `${d} kWh`)); // Zeigt "kWh" an der Y-Achse
+        .call(d3.axisLeft(y).ticks(5).tickSize(0).tickFormat(d => `${d} m³`)); // Zeigt "m³" an der Y-Achse
 
     // Balken zeichnen
     svg.selectAll(".bar")
@@ -162,7 +162,7 @@ export function draw_graph(data) {
     svg.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "#f59e0b") // Warmes, gut lesbares Strom-Gelb
+        .attr("stroke", "#dc2626")
         .attr("stroke-width", 4)
         .attr("d", line);
 };

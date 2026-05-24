@@ -102,9 +102,9 @@ export function draw_graph(data) {
     const computedStyles = window.getComputedStyle(chartContainer);
 
     const margin = {
-        top: parseInt(computedStyles.getPropertyValue('--chart-margin-top')) || 50,
+        top: parseInt(computedStyles.getPropertyValue('--chart-margin-top')) || 10,
         right: parseInt(computedStyles.getPropertyValue('--chart-margin-right')) || 50,
-        bottom: parseInt(computedStyles.getPropertyValue('--chart-margin-bottom')) || 50,
+        bottom: parseInt(computedStyles.getPropertyValue('--chart-margin-bottom')) || 10,
         left: parseInt(computedStyles.getPropertyValue('--chart-margin-left')) || 75
     };
 
