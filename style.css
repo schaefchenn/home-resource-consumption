@@ -254,6 +254,15 @@ body {
     .layout {
         flex-direction: column;
     }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    main.layout {
+        padding: 1rem;
+    }
     
     .left {
         width: 100%;
