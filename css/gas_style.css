@@ -191,7 +191,7 @@ header {
     /* === LEUCHT-SCHLAGSCHATTEN IN FEURIGEN ROT-ORANGE-TÖNEN === */
     box-shadow: 
         0 0 50px 2px rgba(239, 68, 68, 0.15),   /* Breites, sanftes Gasflammen-Glimmen (Rot) */
-        0 0 20px 1px rgba(249, 115, 22, 0.25);  /* Intensiverer innerer Kern (Orange) */
+        0 0 1px 0px rgba(249, 115, 22, 0.25);  /* Intensiverer innerer Kern (Orange) */
 }
 
 /* Auf die ID deiner gas.html angepasst */
